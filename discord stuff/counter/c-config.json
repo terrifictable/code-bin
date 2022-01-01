@@ -1,0 +1,9 @@
+{
+    "tokens": [
+        "Token 1",
+        "Token 2"
+    ],
+    "channelID": "Channel ID",
+    "start": "0",
+    "end": "<end counting at>"
+}
