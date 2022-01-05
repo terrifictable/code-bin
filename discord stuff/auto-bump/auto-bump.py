@@ -1,3 +1,4 @@
+from datetime import datetime
 from colorama import Fore
 import requests
 import random
@@ -43,11 +44,13 @@ def proxy():
         fp.seek(0)
         fp.truncate()
         fp.writelines(lines[1:])
+        os.system("cls;clear")
     return proxy
 
 
 with open("./bd-config.json", "r") as f:
     data = json.load(f)
+
 
 count = 1
 os.system("cls")
@@ -62,15 +65,20 @@ while 1:
         userName = r.json()['username']
         userID = r.json()['id']
         space = "".join(" " for i in range(19 - len(userName)))
-        print(userName + space + "|   !d bump ┈➤  " + str(count))
 
-        headers = {'Authorization': token}
-        requests.post(f'https://discord.com/api/v9/channels/'+data["channelID"]+'/messages',
-                      proxies={"ftp": f'{proxy()}'},
-                      headers=headers,
-                      data={"content": f"!d bump"})
+        for channelID in data["channelID"]:
+            headers = {'Authorization': token}
+            requests.post(f'https://discord.com/api/v9/channels/'+channelID+'/messages',
+                          proxies={"ftp": f'{proxy()}'},
+                          headers=headers,
+                          data={"content": f"!d bump"})
 
-        time.sleep(int(data["timeout"]) + random.randint(5, 30))
+            timeout = random.randint(5, 30)
+            ct = time.strftime('%H:%M:%S').split(':')
+            print(
+                f"{userName}{space}|   {channelID}   |   !d bump ┈>  {str(count)}   |   Next Bump ┈>  {str(int(ct[0])+2)}:{str(ct[1])}:{str(int(ct[2])+timeout)}")
+        time.sleep(int(data["timeout"]) + timeout)
         count += 1
     except:
+        print("Auth/Bump failed ┈>  retrying in 1min 40sec")
         time.sleep(100)

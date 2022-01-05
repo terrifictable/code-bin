@@ -1,5 +1,5 @@
 {
     "token": "Token",
-    "channelID": "ChannelID",
+    "channelID": ["ChannelID-1", "ChannelID-2"],
     "timeout": "Timeout (in seconds)"
 }
