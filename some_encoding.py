@@ -1,3 +1,5 @@
+# Code by TerrificTable (https://github.com/TerrificTable)
+
 from random import Random
 
 
@@ -30,7 +32,7 @@ def str_from_bytearray(seed: int, arr: bytearray) -> str:
 
 
 seed = 69422
-message = "Abend"
+message = "YOUR TEXT HERE"
 
 
 print(f"""
