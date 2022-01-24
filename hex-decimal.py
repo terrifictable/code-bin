@@ -1,3 +1,5 @@
+# Code by TerrificTable (https://github.com/TerrificTable)
+
 def encode_hex(vars):
 	valHex = []
 	for var in vars:
