@@ -1,3 +1,5 @@
+# Code by TerrificTable (https://github.com/TerrificTable)
+
 # idk why i made this, mby someone will find it usefull or not
 import requests
 
