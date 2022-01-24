@@ -1,3 +1,5 @@
+# Code by TerrificTable (https://github.com/TerrificTable)
+
 from colorama import Fore
 import requests
 import json
