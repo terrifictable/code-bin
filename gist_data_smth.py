@@ -11,7 +11,8 @@ for c in content:
     new_content = c.split("::")
 
     print(new_content[0] + ": " + new_content[1]) # it will output the variable name and value
-
+    
+   
 
 # make your gist and split variable nameas and values by "::"
 # content = str(requests.get('RAW_gist.githubusercontent_URL').content.decode('utf-8')).replace("'", "").split('::')
