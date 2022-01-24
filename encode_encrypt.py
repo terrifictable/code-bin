@@ -1,3 +1,5 @@
+# Code by TerrificTable (https://github.com/TerrificTable)
+
 import codecs
 
 
