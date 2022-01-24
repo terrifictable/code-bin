@@ -1,3 +1,5 @@
+# Code by TerrificTable (https://github.com/TerrificTable)
+
 from datetime import datetime
 from colorama import Fore
 import requests
