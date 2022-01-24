@@ -6,7 +6,6 @@ import codecs
 amt = 2 # how often it will get encoded
 code = """import os; print(f'Hello from: {os.getenv("COMPUTERNAME")}')""" # What you want to encode in here
 
-
 # Encode Function
 def enc(code):
     return codecs.encode(bytes(code, 'utf-8'), 'base64').decode('utf-8').replace("\n", "") # The encoding it self
