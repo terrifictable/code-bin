@@ -1,8 +1,7 @@
 import socket
 
 
-# Scanning
-def port_scan(address, port):
+def port_scan(address, port): # "Scanner"
     try:
         target = socket.gethostbyname(address) 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Setting up socket
@@ -22,5 +21,5 @@ addresses = ["142.250.186.174", "142.250.185.110"] # IP addresses to scan "on"
 ports = [80, 22] # Ports to scan for
 for addr in addresses:
     for port in ports:
-        res = port_scan(addr, port)
+        res = port_scan(addr, port) # Scanning IP's for Ports
         print(str(res) + "  |  " + addr)
