@@ -1,3 +1,5 @@
+# Made by TerrificTable (https://github.com/TerrificTable)
+
 class builder:
     def __init__(self) -> None:
         self.hostname = input("Hostname (ip): ")
