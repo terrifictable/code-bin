@@ -9,7 +9,7 @@ api.listen(5000, () => {
     console.log("API up and running (http://localhost:5000)");
 });
 
-let workingDir = "./data/";
+let workingDir = "./data/"
 
 
 api.post("/add", (req, res) => {
@@ -17,20 +17,23 @@ api.post("/add", (req, res) => {
     let name = req.body['name'];
     let content = req.body['content'];
     let path = req.body['path'];
-    let newpath = path.replace(' ', "_") + "/";
+    let newpath = path.replace(' ', "_") + "/"
 
-    if (newpath == "") { newpath = "/" };
-    let tmppath = workingDir + newpath + name;
-    let finalpath = tmppath.replace("//", "/");
+    if (newpath == "") { newpath = "/" }
+    let tmppath = workingDir + newpath + name
+    let finalpath = tmppath.replace("//", "/")
+    
+    fs.mkdir(workingDir, () => { "" })
 
     if (name != "" || name != None) {
         fs.mkdir(workingDir + path, () => { "succsess" })
         if (fs.existsSync(finalpath)) {
-            res.send('File already exists');
+            res.send('File already exists')
         }
-        fs.writeFileSync(finalpath, content);
-        try { res.send("succsess") } catch { "" }
+        fs.writeFileSync(finalpath, content)
+        try {
+            res.send("succsess");
+        } catch { "" }
     }
     try { res.send('Invalid name') } catch { "" }
 });
-// this is shit code
