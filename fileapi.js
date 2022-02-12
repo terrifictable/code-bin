@@ -33,3 +33,4 @@ api.post("/add", (req, res) => {
     }
     try { res.send('Invalid name') } catch { "" }
 });
+// this is shit code
