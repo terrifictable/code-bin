@@ -3,7 +3,8 @@ import java.net.*;
 import java.util.*;
 
 class NewClass {
-    public static void sendPingRequest(String ipAddress, int port, int timeout) throws UnknownHostException, IOException {
+    public static void sendPingRequest(String ipAddress, int port, int timeout)
+            throws UnknownHostException, IOException {
         InetAddress ping = InetAddress.getByName(ipAddress);
         if (ping.isReachable(timeout) && portIsOpen(ipAddress, port, timeout))
             System.out.println(port + "   |   " + ipAddress + "   |   Valid");
@@ -24,12 +25,12 @@ class NewClass {
 
     public static void main(String[] args) throws UnknownHostException, IOException {
         try {
-            if (args.length > 2) {
+            if (args.length < 1) {
                 System.out.println("usage: java .java IP PORT [-d]");
                 System.exit(1);
             }
             String ipAddress = args[0];
-            int port = Integer.parseInt(args[1]); // 25565
+            int port = Integer.parseInt(args[1]);
 
             sendPingRequest(ipAddress, port, 5000);
         } catch (Exception e) {
