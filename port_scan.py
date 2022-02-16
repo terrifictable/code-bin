@@ -1,25 +1,39 @@
+import os
 import socket
+import sys
 
 
-def port_scan(address, port): # "Scanner"
+def port_scan(address, port):
     try:
-        target = socket.gethostbyname(address) 
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Setting up socket
-        socket.setdefaulttimeout(1) # set timeout
+        target = socket.gethostbyname(address)
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socket.setdefaulttimeout(1)
 
-        result = s.connect_ex((target, port)) # connect
+        # returns an error indicator
+        result = s.connect_ex((target, port))
         if result == 0:
-            return port
-        s.close()
+            return port  # if port != None or port != "None" else "None"
+        else:
+            s.close()
+            return "None"
     except socket.gaierror:
         return "ERROR: Hostname Could Not Be Resolved"
     except socket.error:
         return "ERROR: Server not responding"
 
 
-addresses = ["142.250.186.174", "142.250.185.110"] # IP addresses to scan "on"
-ports = [80, 22] # Ports to scan for
+ports = [80]
+if "-h" in sys.argv:
+    sys.exit(__file__.split("\\")[-1] + " ip [-p port] [-h]")
+elif len(sys.argv) > 1:
+    addresses = sys.argv[1].split(",")
+    if "-p" in sys.argv:
+        ports = sys.argv[3].split(",")
+else:
+    sys.exit(__file__.split("\\")[-1] + " ip [-p port] [-h]")
+
 for addr in addresses:
     for port in ports:
-        res = port_scan(addr, port) # Scanning IP's for Ports
-        print(str(res) + "  |  " + addr)
+        res = port_scan(addr, int(port))
+        space = " "*(8-len(str(res)))
+        print(str(res) + space + "|  " + addr)
