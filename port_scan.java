@@ -3,8 +3,7 @@ import java.net.*;
 import java.util.*;
 
 class NewClass {
-    public static void sendPingRequest(String ipAddress, int port, int timeout)
-            throws UnknownHostException, IOException {
+    public static void sendPingRequest(String ipAddress, int port, int timeout) throws UnknownHostException, IOException {
         InetAddress ping = InetAddress.getByName(ipAddress);
         if (ping.isReachable(timeout) && portIsOpen(ipAddress, port, timeout))
             System.out.println(port + "   |   " + ipAddress + "   |   Valid");
