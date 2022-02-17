@@ -8,9 +8,11 @@ class port_scan {
         InetAddress ping = InetAddress.getByName(ipAddress);
 
         if (ping.isReachable(timeout) && portIsOpen(ipAddress, port, timeout))
-            System.out.print("\r\033[92m" + port + "   |   " + ipAddress + "   |   Valid\n");
+            // System.out.printf("\r\033[92m" + port + " | " + ipAddress + " | Valid\n");
+            System.out.printf("\r\033[92m%5s|  %s  |  %s", Integer.toString(port), ipAddress, "Valid    \n");
         else
-            System.out.print("\r\033[93m" + port + "   |   " + ipAddress + "   |   Invalid\r");
+            // System.out.print("\r\033[93m" + port + " | " + ipAddress + " | Invalid\r");
+            System.out.printf("\r\033[93m%5s|  %s  |  %s", Integer.toString(port), ipAddress, "Invalid\r");
     }
 
     private static boolean portIsOpen(String ip, int port, int timeout) {
