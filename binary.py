@@ -1,15 +1,12 @@
 import re
-
-
 class binary:
-
     # Encode
     def str_binary(x: str):
         return (' ').join(re.findall('.{1,8}', ''.join(format(ord(i), '08b') for i in x)))
 
     # Decode
     def binary_str(y: int):
-        y = int(y, 2)
+        y = int(y.replace(' ', ''), 2)
         return y.to_bytes((y.bit_length() + 7) // 8, 'big').decode()
 
     # Decode1 (*unnessesary code)
