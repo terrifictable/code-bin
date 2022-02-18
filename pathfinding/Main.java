@@ -33,6 +33,6 @@ public class Main {
 
         graph.print();
         // graph.depthFirstSearch(1);
-        graph.breadthFirstSearch(1);
+        // graph.breadthFirstSearch(1);
     }
 }
