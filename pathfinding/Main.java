@@ -17,22 +17,28 @@ public class Main {
 
 
         Graph graph = new Graph(5);
-
+        
+        // Creating Nodes/Points
         graph.addNode(new Node('A'));
         graph.addNode(new Node('B'));
         graph.addNode(new Node('C'));
         graph.addNode(new Node('D'));
         graph.addNode(new Node('E'));
-
+    
+        // Adding connections between Nodes/Points
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
         graph.addEdge(2, 4);
         graph.addEdge(4, 0);
         graph.addEdge(4, 2);
-
+        
         graph.print();
+        
+        // DFS Algorithm
         // graph.depthFirstSearch(1);
+        
+        // BFS Algorithm
         // graph.breadthFirstSearch(1);
     }
 }
