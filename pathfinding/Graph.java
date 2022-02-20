@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// Graph (main) part of the algorithm
 public class Graph {
     ArrayList<Node> nodes;
     int[][] matrix;
