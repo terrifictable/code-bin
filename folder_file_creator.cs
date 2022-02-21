@@ -8,7 +8,7 @@ namespace file_creator
     {
         static void Main(string[] args)
         {
-            string dirPath = @"PATH";
+            string dirPath = Directory.GetCurrentDirectory();
             string[] folders = GetSubFolders(dirPath);
 
 
