@@ -19,6 +19,6 @@
         Windows/Linux/Mac-OS: javac -d ./build file.java
                               cd ./build/
                               jar cvf FILENAME.jar *
-  <br>Java:  
+  <br>Java Run:  
         Windows/Linux/Mac-OS: java file.java
   </pre>
