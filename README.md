@@ -6,7 +6,7 @@
 </div>
     
 <div> <!-- align="center" -->
-  <h1>Compile</h>
+  <h1 align="center">Compile</h>
   <h3><pre>C#:
         Linux: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
         Windows: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
