@@ -7,8 +7,7 @@
     
 <div> <!-- align="center" -->
   <h1>Compile</h>
-  <pre>
-  <h3>C#:
+  <h3><pre>C#:
       <br>Linux: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
       <br>Windows: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
       <br>Mac-OS: dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
