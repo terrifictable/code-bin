@@ -11,17 +11,14 @@
       <br>Linux: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
       <br>Windows: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
       <br>Mac-OS: dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
-  <br>
-  C/C++:
+  <br>C/C++:
       <br>Windows: g++ file.c / g++ file.cpp   --   gcc file.c / gcc file.cpp
       <br>Linux: g++ file.c / g++ file.cpp   --   gcc file.c / gcc file.cpp
       <br>Mac-OS: g++ -g hello.c -lm / g++ -g hello.cpp -lm   --   gcc -g hello.c -lm / gcc -g hello.cpp -lm
-  <br>
-  Java Compile:
+  <br>Java Compile:
       <br>Windows/Linux/Mac-OS: javac -d ./build file.java
       <br>                      cd ./build/
       <br>                      jar cvf FILENAME.jar *
-  <br>
-  Java:  
+  <br>Java:  
       <br>Windows/Linux/Mac-OS: java file.java
   </pre>
