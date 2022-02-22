@@ -7,6 +7,7 @@
     
 <div> <!-- align="center" -->
   <h1>Compile</h>
+  <pre>
   <h3>C#:
       <br>Linux: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
       <br>Windows: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
@@ -24,3 +25,4 @@
   <br>
   Java:  
       <br>Windows/Linux/Mac-OS: java file.java
+  </pre>
