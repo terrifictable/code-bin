@@ -4,7 +4,7 @@
   <h3>Bin for stuff that doesnt deserve their own repo<br>
   !Also if this isnt working DO NOT message me on discord or asking for help this is just some code i didnt rly think about not any real project!
     
-<div align="center">
+<div> <!-- align="center" -->
   <h1>Compile</h>
   <h3>C#:
       <br>Linux: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
