@@ -12,13 +12,13 @@
                           <br>- Mingw-w64 (GCC)
                           <br>- java development kit (java)  |  I  recomend the latest version (16/17 at the moment)
   <h3><pre>C#:
-        - Windows: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
-        - Linux: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
-        - Mac-OS: dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
+        - Windows:  dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
+        - Linux:    dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
+        - Mac-OS:   dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
   <br>C/C++:
-        - Windows: g++ file.c / g++ file.cpp   --   gcc file.c / gcc file.cpp
-        - Linux: g++ file.c / g++ file.cpp   --   gcc file.c / gcc file.cpp
-        - Mac-OS: g++ -g hello.c -lm / g++ -g hello.cpp -lm   --   gcc -g hello.c -lm / gcc -g hello.cpp -lm
+        - Windows:  g++ file.c          /  g++ file.cpp            --   gcc file.c / gcc file.cpp
+        - Linux:    g++ file.c          /  g++ file.cpp            --   gcc file.c / gcc file.cpp
+        - Mac-OS:   g++ -g hello.c -lm  /  g++ -g hello.cpp -lm    --   gcc -g hello.c -lm / gcc -g hello.cpp -lm
   <br>Java:
         Compile:
             - Windows/Linux/Mac-OS: javac -d ./build file.java
