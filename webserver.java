@@ -18,6 +18,25 @@ public class webserver {
         server.start();
     }
 
+    static class MyHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange t) throws IOException {
+            System.out.println("\n[HANDLER]: Start");
+            File file = new File("./views.txt");
+            Scanner s = null;
+            int views = get_views(file, s);
+
+            String response = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8' /><title>Views</title><style>#views { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 15px; margin: 15px, 10, auto; }</style></head><body><h1 id='views'>Views: "
+                    + String.valueOf(views) + "</h1></body></html>";
+            update_views(file, s, views);
+
+            t.sendResponseHeaders(200, response.length());
+            OutputStream os = t.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        }
+    }
+
     public static int get_views(File file, Scanner s) {
         boolean data_found = false;
 
@@ -28,6 +47,7 @@ public class webserver {
                 if (line.contains("views:")) {
                     data_found = true;
                     views = convert(line.replace("views:", ""));
+                    System.out.println("[GET-ViewCount]: " + String.valueOf(views));
                 }
             }
         } catch (Exception e) {
@@ -36,32 +56,15 @@ public class webserver {
         return views;
     }
 
-    public static void update_views(File file, Scanner s) {
+    public static void update_views(File file, Scanner s, int views) {
         try {
-            int views = get_views(file, s);
+            System.out.println("[UPDATE-ViewCount]: " + String.valueOf(views));
             try (FileWriter filewrite = new FileWriter("views.txt")) {
                 filewrite.write("views:" + String.valueOf(views + 1));
             }
 
         } catch (Exception e) {
             System.out.println("Error writing views file: " + e.getMessage());
-        }
-    }
-
-    static class MyHandler implements HttpHandler {
-        @Override
-        public void handle(HttpExchange t) throws IOException {
-            File file = new File("./views.txt");
-            Scanner s = null;
-            update_views(file, s);
-            int views = get_views(file, s);
-
-            String response = String.valueOf(views);
-
-            t.sendResponseHeaders(200, response.length());
-            OutputStream os = t.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
         }
     }
 
