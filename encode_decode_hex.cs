@@ -24,11 +24,16 @@ namespace test
                 Console.Write("\nString: ");
                 str = Console.ReadLine();
 
-                if (url == true) {
-                    Console.WriteLine("Hex: https://%" + StrToHex(str).Replace(" ", "%"));
-                    Console.ReadKey();
+                if (str != "" || str != " ") {
+                    if (url == true) {
+                        Console.WriteLine("Hex: https://%" + StrToHex(str).Replace(" ", "%"));
+                        Console.ReadKey();
+                    } else {
+                        Console.WriteLine("Hex: " + StrToHex(str));
+                        Console.ReadKey();
+                    }
                 } else {
-                    Console.WriteLine("Hex: " + StrToHex(str));
+                    Console.WriteLine("Invalid Input: '" + str + "'");
                     Console.ReadKey();
                 }
 
@@ -36,8 +41,13 @@ namespace test
                 Console.Write("\nHex: ");
                 hex = Console.ReadLine();
 
-                Console.WriteLine("String: " + HexToStr(hex));
-                Console.ReadKey();
+                if (hex != "" || hex != " ") {
+                    Console.WriteLine("String: " + HexToStr(hex));
+                    Console.ReadKey();
+                } else {
+                    Console.WriteLine("Invalid Input: '" + hex + "'");
+                    Console.ReadKey();
+                }
 
             } else if (option == "3") {
                 Console.WriteLine("\n\n---SETTINGS---");
