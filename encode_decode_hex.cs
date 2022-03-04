@@ -13,8 +13,7 @@ namespace test
             string str;
             string hex;
             
-
-
+            
             Console.Clear();
             Console.WriteLine(" [1] Encode Hex\n [2] Decode Hex\n [3] Settings");
             Console.Write("Option: ");
