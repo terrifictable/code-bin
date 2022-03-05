@@ -2,7 +2,7 @@ using System;
 using System.Text;
 
 
-namespace test
+namespace hex_enc_dec
 {
     class Program
     {
