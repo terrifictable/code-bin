@@ -11,10 +11,12 @@
                           <br>- .Net5.0 (dotnet)
                           <br>- Mingw-w64 (GCC)
                           <br>- java development kit (java)  |  I  recomend the latest version (16/17 at the moment)
-  <h3><pre>C# (<= .Net5.0):
+  <h3><pre>C#:
         - Windows:  dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
         - Linux:    dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
         - Mac-OS:   dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
+                cd ./bin/Debug/net{version}/{win, linux, mac}/publish/{foldername}.exe
+                <h4>example: cd ./bin/Debug/net6.0/win-x64/publish/test.exe<h3>
   <br>C/C++:
         - Windows:  g++ file.c          /  g++ file.cpp            --   gcc file.c         / gcc file.cpp
         - Linux:    g++ file.c          /  g++ file.cpp            --   gcc file.c         / gcc file.cpp
