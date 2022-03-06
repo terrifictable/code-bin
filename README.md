@@ -16,7 +16,7 @@
         - Linux:    dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
         - Mac-OS:   dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
                 cd ./bin/Debug/net{version}/{win, linux, mac}/publish/{foldername}.exe
-                <h4>example: cd ./bin/Debug/net6.0/win-x64/publish/test.exe<h3>
+                   - example: cd ./bin/Debug/net6.0/win-x64/publish/test.exe
   <br>C/C++:
         - Windows:  g++ file.c          /  g++ file.cpp            --   gcc file.c         / gcc file.cpp
         - Linux:    g++ file.c          /  g++ file.cpp            --   gcc file.c         / gcc file.cpp
