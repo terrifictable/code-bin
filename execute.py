@@ -26,10 +26,30 @@ def execute_c(cmd):
         return stdout.decode("ISO-8859-1")
     except Exception as e:
         return e
+ 
+def execute_cpp(cmd):
+    with open("./temp.cpp", "w") as f:
+        print("hi")
+        f.write(cmd)
+    try:
+         subprocess.Popen("gcc temp.cpp -o temp.exe", shell=True, stdin=subprocess.PIPE,
+                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+         time.sleep(0.2)
+         stdout, _ = subprocess.Popen("temp.exe", shell=True, stdin=subprocess.PIPE,
+                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()
+
+         os.remove("./temp.cpp")
+         os.remove("./temp.exe")
+
+         return stdout.decode("ISO-8859-1")
+    except Exception as e:
+         return e
+
 
 def execute_func(val, func): func(val)
   
-print(execute_func("Hello World!", print))
-print(execute_js("""console.log("Hello World!")"""))
-print(execute_c("""#include <stdio.h>\nint main() { printf("Hello World!"); }"""))
-print(execute_cmd("echo Hello World"))
+print(execute_cmd("echo Hello World { Terminal }"))
+print(execute_js("""console.log("Hello World! { Node.js }")"""))
+print(execute_c("""#include <stdio.h>\nint main() { printf("Hello World! { C }"); }"""))
+print(execute_cpp("""#include <stdio.h>\nint main() { printf("Hello World! { C++ }"); }"""))
+print(execute_func("Hello World! { Python }", print))
