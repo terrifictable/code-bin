@@ -5,13 +5,38 @@ void file_content(char *filename, char *method, FILE *fptr)
 {
     fptr = fopen(filename, method);
 
-    while (1)
+    if (method == "r")
     {
-        char c = fgetc(fptr);
-        if (c != EOF)
-            printf("%c", c);
-        else
-            break;
+        while (1)
+        {
+            char c = fgetc(fptr);
+            if (c != EOF)
+                printf("%c", c);
+            else
+                break;
+        }
+    }
+    else if (method == "w")
+    {
+        char *content;
+
+        printf("File Content: ");
+        fgets(content, 1000000000, stdin);
+
+        fprintf(fptr, "%s\n", content);
+    }
+    else if (method == "a")
+    {
+        char *content;
+
+        prinf("File Content: ");
+        fgets(content, 100000000, stdin);
+
+        fputs(content, fptr);
+    }
+    else
+    {
+        printf("Invalid Method\n");
     }
 
     fclose(fptr);
@@ -24,6 +49,5 @@ int main(int argc, char *argv[])
     char *method = "r";
 
     file_content(filename, method, fptr);
-
-    // getchar();
+    getchar();
 }
