@@ -20,7 +20,6 @@ void exec_js(char *code)
 
 void exec_c(char *code)
 {
-    // this is completely useless
     FILE *fptr;
     fptr = fopen("./temp.c", "w");
 
@@ -29,6 +28,20 @@ void exec_c(char *code)
 
     system("gcc ./temp.c -o temp");
     remove("temp.c");
+    system("temp.exe");
+    remove("temp.exe");
+}
+
+void exec_cpp(char *code)
+{
+    FILE *fptr;
+    fptr = fopen("./temp.cpp", "w");
+
+    fprintf(fptr, "%s\n", code);
+    fclose(fptr);
+
+    system("gcc ./temp.cpp -o temp");
+    remove("temp.cpp");
     system("temp.exe");
     remove("temp.exe");
 }
@@ -47,8 +60,9 @@ void exec_py(char *code)
 
 int main(int argc, char *argv[])
 {
-    exec_cmd("echo Hello World!");
-    exec_js("console.log(\"Hello World!\")");
-    exec_c("#include <stdio.h>\nint main() { printf(\"Hello World!\"); return 0; }");
-    exec_py("print(\"Hello World!\")");
+    exec_cmd("echo Hello World! { teminal }");
+    exec_js("console.log(\"Hello World! { Node.js }\")");
+    exec_c("#include <stdio.h>\nint main() { printf(\"Hello World! { C }\"); return 0; }");
+    exec_cpp("#include <stdio.h>\nint main() { printf(\"Hello World! { C++ }\"); }");
+    exec_py("print(\"Hello World! { Python }\")");
 }
