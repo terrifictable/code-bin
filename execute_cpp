@@ -69,13 +69,13 @@ void exec_kotlin(char code[])
 
 void exec_lua(char code[])
 {
-    FILE *fp = fopen("./temp.lua", "w");
+    FILE *fp = fopen("./temp.lua", "w"); // create and open temp file
 
-    fprintf(fp, "%s\n", code);
-    fclose(fp);
+    fprintf(fp, "%s\n", code); // write code
+    fclose(fp);                // close temp file
 
-    system("lua temp.lua");
-    remove("temp.lua");
+    system("lua temp.lua"); // execute temp file
+    remove("temp.lua");     // remove temp file
 }
 
 void exec_py(char code[])
