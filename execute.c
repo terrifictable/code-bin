@@ -67,6 +67,17 @@ void exec_kotlin(char *code)
     remove("temp.jar");                                       // remove compiled temp file
 }
 
+void exec_lua(char *code)
+{
+    FILE *fp = fopen("./temp.lua", "w"); // create and open temp file
+
+    fprintf(fp, "%s\n", code); // write temp file
+    fclose(fp);                // close temp file
+
+    system("lua temp.lua"); // execute temp file
+    remove("temp.lua");     // remove temp file
+}
+
 void exec_py(char *code)
 {
     FILE *fptr = fopen("./temp.py", "w"); // create and open temp file
@@ -85,6 +96,6 @@ int main(int argc, char *argv[])
     exec_c("#include <stdio.h>\nint main() { printf(\"Hello World! { C }\\n\"); }");                                                      // Execute C code (why would you ever want to use this?)
     exec_cpp("#include <stdio.h>\nint main() { printf(\"Hello World! { C++ }\\n\"); }");                                                  // Execute C++ Code
     exec_java("public class temp {\n public static void main(String[] args) {\n System.out.println(\"Hello World! { Java }\"); \n} \n}"); // Execute Java Code
-    exec_kotlin("fun main() {\n println(\"Hello World! { Kotlin }\"); \n}");                                                              // Execute Kotlin Code (this will take some time)
+    exec_kotlin("fun main() {\n println(\"Hello World! { Kotlin }\"); \n}");                                                              // Execute Kotlin Code
     exec_py("print(\"Hello World! { Python }\")");                                                                                        // Execute Python Code
 }
