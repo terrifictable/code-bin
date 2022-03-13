@@ -36,8 +36,8 @@
             
   <br>Perl/Ruby/Lua/Python:
       Run:
-        - Windows/Linux/Mac-OS: perl file.perl
-        - Windows/Linux/Mac-OS: ruby file.ruby
-        - Windows/Linux/Mac-OS: lua file.Lua
-        - Windows/Linux/Mac-OS: python3 file.py
+          - Windows/Linux/Mac-OS: perl file.perl
+          - Windows/Linux/Mac-OS: ruby file.ruby
+          - Windows/Linux/Mac-OS: lua file.Lua
+          - Windows/Linux/Mac-OS: python3 file.py
   </pre>
