@@ -26,8 +26,9 @@ void exec_c(char code[])
 
     system("gcc ./temp.c -o temp"); // compile temp file
     remove("temp.c");               // remove temp file
-    system("temp.exe");             // execute compiled code
-    remove("temp.exe");             // remove compiled code file
+    // system("chmod +x temp.exe");      // make the file executable
+    system("temp.exe"); // execute compiled code
+    remove("temp.exe"); // remove compiled code file
 }
 
 void exec_cpp(char code[])
@@ -39,8 +40,9 @@ void exec_cpp(char code[])
 
     system("gcc ./temp.cpp -o temp"); // compile temp file
     remove("temp.cpp");               // remove temp file
-    system("temp.exe");               // execute temp executable
-    remove("temp.exe");               // remove temp executable
+    // system("chmod +x temp.exe");      // make the file executable
+    system("temp.exe"); // execute temp executable
+    remove("temp.exe"); // remove temp executable
 }
 
 void exec_java(char code[])
@@ -67,15 +69,26 @@ void exec_kotlin(char code[])
     remove("temp.jar");                                       // remove compiled temp file
 }
 
-void exec_lua(char code[])
+void exec_ruby(char code[])
 {
-    FILE *fp = fopen("./temp.lua", "w"); // create and open temp file
+    FILE *fp = fopen("./temp.ruby", "w"); // create and open temp file
 
     fprintf(fp, "%s\n", code); // write code
     fclose(fp);                // close temp file
 
-    system("lua temp.lua"); // execute temp file
-    remove("temp.lua");     // remove temp file
+    system("ruby temp.ruby"); // execute temp file
+    remove("temp.ruby");      // remove temp file
+}
+
+void exec_lua(char code[])
+{
+    FILE *fp = fopen("./temp.lua", "w");
+
+    fprintf(fp, "%s\n", code);
+    fclose(fp);
+
+    system("lua temp.lua");
+    remove("temp.lua");
 }
 
 void exec_py(char code[])
@@ -97,15 +110,17 @@ int main(int argc, char *argv[])
     char code_js[] = "console.log(\"Hello World! { Node.js }\")";
     char code_lua[] = "print(\"Hello World! { Lua }\")";
     char code_cpp[] = "#include <stdio.h>\nint main() { printf(\"Hello World! { C++ }\\n\"); }";
+    char code_ruby[] = "puts \" Hello World ! { Ruby }\"";
     char code_java[] = "public class temp {\n public static void main(String[] args) {\n System.out.println(\"Hello World! { Java }\"); \n} \n}";
     char code_kotlin[] = "fun main() {\n println(\"Hello World! { Kotlin }\"); \n}";
 
-    exec_cmd(cmd);            // Execute stuff from/in terminal
-    exec_js(code_js);         // Execute Node.js code
     exec_c(code_c);           // Execute C code (why would you ever want to use this?)
+    exec_js(code_js);         // Execute Node.js code
+    exec_py(code_py);         // Execute Python Code
+    exec_cmd(cmd);            // Execute stuff from/in terminal
+    exec_lua(code_lua);       // Execute Lua Code
     exec_cpp(code_cpp);       // Execute C++ Code
     exec_java(code_java);     // Execute Java Code
+    exec_ruby(code_ruby);     // Execute Ruby Code
     exec_kotlin(code_kotlin); // Execute Kotlin Code
-    exec_lua(code_lua);       // Execute Lua Code
-    exec_py(code_py);         // Execute Python Code
 }
