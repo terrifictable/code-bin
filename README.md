@@ -28,4 +28,9 @@
                                     jar cvf FILENAME.jar *
         Run:  
             - Windows/Linux/Mac-OS: java file.java
+  <br>Kotlin:
+      Compile:
+            - Windows/Linux/Mac-OS: kotlinc ./file.kt -include-runtime -d ./file.jar
+      Run (compiled .kt file only):
+            - Windows/linux/Mac-OS: java -jar file.jar
   </pre>
