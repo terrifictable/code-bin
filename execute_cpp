@@ -58,7 +58,7 @@ void exec_java(char code[])
 
 void exec_kotlin(char code[])
 {
-    FILE *fp = fopen("./temp.kt", "w"); // create an open temp file
+    FILE *fp = fopen("./temp.kt", "w"); // create and open temp file
 
     fprintf(fp, "%s\n", code); // write code
     fclose(fp);                // close temp file
@@ -67,6 +67,17 @@ void exec_kotlin(char code[])
     remove("temp.kt");                                        // remove temp file
     system("java -jar ./temp.jar");                           // execute compiled temp file
     remove("temp.jar");                                       // remove compiled temp file
+}
+
+void exec_perl(char code[])
+{
+    FILE *fp = fopen("./temp.perl", "w"); // create and open temp file
+
+    fprintf(fp, "%s\n", code); // write code
+    fclose(fp);                // close temp file
+
+    system("perl temp.perl"); // execute temp file
+    remove("temp.perl");      // remove temp file
 }
 
 void exec_ruby(char code[])
@@ -82,13 +93,13 @@ void exec_ruby(char code[])
 
 void exec_lua(char code[])
 {
-    FILE *fp = fopen("./temp.lua", "w");
+    FILE *fp = fopen("./temp.lua", "w"); // create and open temp file
 
-    fprintf(fp, "%s\n", code);
-    fclose(fp);
+    fprintf(fp, "%s\n", code); // write code
+    fclose(fp);                // close temp file
 
-    system("lua temp.lua");
-    remove("temp.lua");
+    system("lua temp.lua"); // execute temp file
+    remove("temp.lua");     // remove temp file
 }
 
 void exec_py(char code[])
@@ -110,7 +121,8 @@ int main(int argc, char *argv[])
     char code_js[] = "console.log(\"Hello World! { Node.js }\")";
     char code_lua[] = "print(\"Hello World! { Lua }\")";
     char code_cpp[] = "#include <stdio.h>\nint main() { printf(\"Hello World! { C++ }\\n\"); }";
-    char code_ruby[] = "puts \" Hello World ! { Ruby }\"";
+    char code_perl[] = "print \"Hello World! { Perl }\";";
+    char code_ruby[] = "puts \"Hello World ! { Ruby }\"";
     char code_java[] = "public class temp {\n public static void main(String[] args) {\n System.out.println(\"Hello World! { Java }\"); \n} \n}";
     char code_kotlin[] = "fun main() {\n println(\"Hello World! { Kotlin }\"); \n}";
 
@@ -119,6 +131,7 @@ int main(int argc, char *argv[])
     exec_py(code_py);         // Execute Python Code
     exec_cmd(cmd);            // Execute stuff from/in terminal
     exec_lua(code_lua);       // Execute Lua Code
+    exec_perl(code_perl);     // Execute Perl Code
     exec_cpp(code_cpp);       // Execute C++ Code
     exec_java(code_java);     // Execute Java Code
     exec_ruby(code_ruby);     // Execute Ruby Code
