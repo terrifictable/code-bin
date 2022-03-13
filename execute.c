@@ -78,6 +78,28 @@ void exec_lua(char *code)
     remove("temp.lua");     // remove temp file
 }
 
+void exec_perl(char *code)
+{
+    FILE *fp = fopen("./temp.perl", "w"); // create and open temp file
+
+    fprintf(fp, "%s\n", code); // write code
+    fclose(fp);                // close temp file
+
+    system("perl temp.perl"); // execute temp file
+    remove("temp.perl");      // remove temp file
+}
+
+void exec_ruby(char *code)
+{
+    FILE *fp = fopen("./temp.ruby", "w"); // create and open temp file
+
+    fprintf(fp, "%s\n", code); // write code
+    fclose(fp);                // close temp file
+
+    system("ruby temp.ruby"); // execute temp file
+    remove("temp.ruby");      // remove temp file
+}
+
 void exec_py(char *code)
 {
     FILE *fptr = fopen("./temp.py", "w"); // create and open temp file
@@ -92,10 +114,13 @@ void exec_py(char *code)
 int main(int argc, char *argv[])
 {
     exec_cmd("echo Hello World! { Teminal }");                                                                                            // Execute stuff from/in terminal
-    exec_js("console.log(\"Hello World! { Node.js }\")");                                                                                 // Execute Node.js code
+    exec_js("console.log(\"Hello World! { Node.js }\");");                                                                                // Execute Node.js code
     exec_c("#include <stdio.h>\nint main() { printf(\"Hello World! { C }\\n\"); }");                                                      // Execute C code (why would you ever want to use this?)
     exec_cpp("#include <stdio.h>\nint main() { printf(\"Hello World! { C++ }\\n\"); }");                                                  // Execute C++ Code
     exec_java("public class temp {\n public static void main(String[] args) {\n System.out.println(\"Hello World! { Java }\"); \n} \n}"); // Execute Java Code
     exec_kotlin("fun main() {\n println(\"Hello World! { Kotlin }\"); \n}");                                                              // Execute Kotlin Code
+    exec_ruby("puts \"Hello World! { Ruby }\";");                                                                                         // Execute Ruby Code
+    exec_perl("print \"Hello World! { Perl }\";");                                                                                        // Execute Perl Code
+    exec_lua("print(\"Hello World! { Lua }\");");                                                                                         // Execute Lua Code
     exec_py("print(\"Hello World! { Python }\")");                                                                                        // Execute Python Code
 }
