@@ -29,15 +29,14 @@
         Run:  
             - Windows/Linux/Mac-OS: java file.java
   <br>Kotlin:
-      Compile:
+        Compile:
             - Windows/Linux/Mac-OS: kotlinc ./file.kt -include-runtime -d ./file.jar
-      Run (compiled .kt file only):
+        Run (compiled .kt file only):
             - Windows/linux/Mac-OS: java -jar file.jar
-            
   <br>Perl/Ruby/Lua/Python:
-      Run:
-          - Windows/Linux/Mac-OS: perl file.perl
-          - Windows/Linux/Mac-OS: ruby file.ruby
-          - Windows/Linux/Mac-OS: lua file.Lua
-          - Windows/Linux/Mac-OS: python3 file.py
+        Run:
+            - Windows/Linux/Mac-OS: perl file.perl
+            - Windows/Linux/Mac-OS: ruby file.ruby
+            - Windows/Linux/Mac-OS: lua file.Lua
+            - Windows/Linux/Mac-OS: python3 file.py    
   </pre>
