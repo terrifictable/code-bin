@@ -11,6 +11,8 @@
                           <br>- .Net5.0 (dotnet)
                           <br>- Mingw-w64 (GCC)
                           <br>- java development kit (java)  |  I  recomend the latest version (16/17 at the moment)
+                          <br>- Kotlinc
+                          <br>- Perl/Ruby/Lua5.x/Python3
   <h3><pre>C#:
         - Windows:  dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
         - Linux:    dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
