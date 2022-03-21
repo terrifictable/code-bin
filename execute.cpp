@@ -24,8 +24,8 @@ void exec_c(char code[])
     fprintf(fptr, "%s\n", code); // write code
     fclose(fptr);                // close temp file
 
-    system("gcc ./temp.c -o temp"); // compile temp file
-    remove("temp.c");               // remove temp file
+    system("gcc ./temp.c -o temp.exe"); // compile temp file
+    remove("temp.c");                   // remove temp file
     // system("chmod +x temp.exe");      // make the file executable
     system("temp.exe"); // execute compiled code
     remove("temp.exe"); // remove compiled code file
@@ -38,8 +38,8 @@ void exec_cpp(char code[])
     fprintf(fptr, "%s\n", code); // write code
     fclose(fptr);                // close temp file
 
-    system("gcc ./temp.cpp -o temp"); // compile temp file
-    remove("temp.cpp");               // remove temp file
+    system("gcc ./temp.cpp -o temp.exe"); // compile temp file
+    remove("temp.cpp");                   // remove temp file
     // system("chmod +x temp.exe");      // make the file executable
     system("temp.exe"); // execute temp executable
     remove("temp.exe"); // remove temp executable
@@ -113,26 +113,41 @@ void exec_py(char code[])
     remove("temp.py");         // remove temp file
 }
 
+void exec_go(char code[])
+{
+    FILE *fp = fopen("./temp.go", "w"); // create and open temp file
+
+    fprintf(fp, "%s\n", code); // write temp file
+    fclose(fp);                // close temp file
+
+    system("go build temp.go"); // compile temp file
+    remove("temp.go");          // remove temp file
+    system("./temp");           // execute compiled file
+    remove("temp");             // remove compiled file
+}
+
 int main(int argc, char *argv[])
 {
-    char cmd[] = "echo Hello World! { Teminal }";
+    char code_cmd[] = "echo Hello World! { Teminal }";
     char code_c[] = "#include <stdio.h>\nint main() { printf(\"Hello World! { C }\\n\"); }";
+    char code_go[] = "package main \nimport \"fmt\" \nfunc main() { fmt.Println(\"Hello World! { Go }\") }";
     char code_py[] = "print(\"Hello World! { Python }\")";
     char code_js[] = "console.log(\"Hello World! { Node.js }\")";
     char code_lua[] = "print(\"Hello World! { Lua }\")";
     char code_cpp[] = "#include <stdio.h>\nint main() { printf(\"Hello World! { C++ }\\n\"); }";
-    char code_perl[] = "print \"Hello World! { Perl }\";";
-    char code_ruby[] = "puts \"Hello World ! { Ruby }\"";
+    char code_perl[] = "print \"Hello World! { Perl }\n\";";
+    char code_ruby[] = "puts \"Hello World! { Ruby }\"";
     char code_java[] = "public class temp {\n public static void main(String[] args) {\n System.out.println(\"Hello World! { Java }\"); \n} \n}";
     char code_kotlin[] = "fun main() {\n println(\"Hello World! { Kotlin }\"); \n}";
 
     exec_c(code_c);           // Execute C code (why would you ever want to use this?)
+    exec_go(code_go);         // Execute Go(Lang) code
     exec_js(code_js);         // Execute Node.js code
     exec_py(code_py);         // Execute Python Code
-    exec_cmd(cmd);            // Execute stuff from/in terminal
+    exec_cmd(code_cmd);       // Execute stuff from/in terminal
     exec_lua(code_lua);       // Execute Lua Code
-    exec_perl(code_perl);     // Execute Perl Code
     exec_cpp(code_cpp);       // Execute C++ Code
+    exec_perl(code_perl);     // Execute Perl Code
     exec_java(code_java);     // Execute Java Code
     exec_ruby(code_ruby);     // Execute Ruby Code
     exec_kotlin(code_kotlin); // Execute Kotlin Code
