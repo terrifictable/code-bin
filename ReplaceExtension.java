@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 
 public class BurpExtender implements IBurpExtender, IHttpListener, ITab {
@@ -35,7 +36,11 @@ public class BurpExtender implements IBurpExtender, IHttpListener, ITab {
                 panel = new JPanel();
 
                 JLabel word_1_fieldlabel = new JLabel("Word to replace:  ");
+                word_1_fieldlabel.setMaximumSize(new Dimension(200, word_1_fieldlabel.getPreferredSize().height));
+                word_1_fieldlabel.setMinimumSize(new Dimension(200, word_1_fieldlabel.getPreferredSize().height));
                 JLabel word_2_fieldlabel = new JLabel("Word to replace word with:  ");
+                word_2_fieldlabel.setMaximumSize(new Dimension(200, word_1_fieldlabel.getPreferredSize().height));
+                word_2_fieldlabel.setMinimumSize(new Dimension(200, word_1_fieldlabel.getPreferredSize().height));
 
                 word_1_field = new JTextField();
                 word_1_field.setText(word_1);
@@ -91,26 +96,40 @@ public class BurpExtender implements IBurpExtender, IHttpListener, ITab {
         this.debug = new PrintWriter(callbacks.getStdout(), true);
         this.debug.println("[ReplaceExt] Initialized");
     }
-
-
-    private byte[] getResponseHeadersAndBody(IHttpRequestResponse messageInfo){
-        byte[] resp = messageInfo.getResponse();
-        IResponseInfo responseData = helpers.analyzeResponse(resp);
-        List<String> headers = responseData.getHeaders();
-        String body = new String(Arrays.copyOfRange(resp, responseData.getBodyOffset(), resp.length));
-
-        body = body.replace(word_1, word_2);
-
-        return helpers.buildHttpMessage(headers, body.getBytes());
-    }
+    
 
     @Override
     public void processHttpMessage(int toolFlag, boolean isRequest, IHttpRequestResponse messageInfo) {
-        if (isRequest) return;
+        if (isRequest) {
+            // Request
+            IRequestInfo request = this.helpers.analyzeRequest(messageInfo.getHttpService(), messageInfo.getRequest());
+            List<String> newHeaders = request.getHeaders();
 
-        byte[] response = getResponseHeadersAndBody(messageInfo);
+            newHeaders.add("Replace-Word: " + word_1 + ":" + word_2);
 
-        messageInfo.setResponse(response);
+            int bodyOffset = request.getBodyOffset();
+            String body = new String(messageInfo.getRequest()).substring(bodyOffset);
+
+            byte[] newRequest = this.helpers.buildHttpMessage(newHeaders, body.getBytes());
+            this.debug.println("[ReplaceExt] [DEBUG] " + "Request");
+
+            messageInfo.setRequest(newRequest);
+
+        } else {
+            // Response
+            byte[] resp = messageInfo.getResponse();
+            IResponseInfo responseData = helpers.analyzeResponse(resp);
+            List<String> headers = responseData.getHeaders();
+            String body = new String(Arrays.copyOfRange(resp, responseData.getBodyOffset(), resp.length));
+
+            body = body.toLowerCase().replace(word_1, word_2);
+
+            byte[] response = helpers.buildHttpMessage(headers, body.getBytes());
+            this.debug.println("[ReplaceExt] [DEBUG] Response");
+
+            messageInfo.setResponse(response);
+
+        }
     }
 
     @Override
