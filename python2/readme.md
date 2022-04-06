@@ -11,5 +11,5 @@ This will execute the <a href="https://github.com/TerrificTable/code-bin/blob/ma
 <br><br><br>
 
 <h1>Info</h>
-<h3>You need make and docker if you want ot use docker
+<h3>You need make and docker if you want ot use docker<br>
 if you want to run it in python you can eighter execute the command with make which needs make to be installed or directly execute the python command which needs python 2(.7)
