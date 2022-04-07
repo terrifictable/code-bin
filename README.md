@@ -33,7 +33,7 @@
   <br>Kotlin:
         Compile:
             - Windows/Linux/Mac-OS: kotlinc ./file.kt -include-runtime -d ./file.jar
-        Run (compiled .kt file only):
+        Run (compiled .kt (or .java) file (.jar)):
             - Windows/linux/Mac-OS: java -jar file.jar
   <br>Perl/Ruby/Lua/Python:
         Run:
