@@ -60,7 +60,7 @@ public class Base85Encoder {
 
     public static String Base85_64Encoder(String stringIn) {
         String base85Encoded = Base85Encode(stringIn);
-        String base64Encoded = Base64Encoder.Base64Encode(base85Encoded);
+        String base64Encoded = Base64Encoder.Companion.Base64Encode(base85Encoded);
 
         return base64Encoded;
     }
