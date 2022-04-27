@@ -1,6 +1,6 @@
 Base64, Base85/Ascii85, Rot: Encryption and decryption<br>
 
-[Main.java]()
+[Main.java](https://github.com/TerrificTable/code-bin/blob/main/encryption/Main.java)
 
 <pre><code>
 Normal:
