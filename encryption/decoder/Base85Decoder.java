@@ -69,7 +69,7 @@ public class Base85Decoder {
     }
 
     public static String Base85_64Decode(String stringIn) {
-        String base64Decoded = _Base64Decoder.Base64Decode(stringIn);
+        String base64Decoded = Base64Decoder.Companion.Base64Decode(stringIn);
         String base85Decoded = Base85Decode(base64Decoded);
 
         return base85Decoded;
