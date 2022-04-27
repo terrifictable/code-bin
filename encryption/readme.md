@@ -1,3 +1,4 @@
+<pre><code>
 Normal:
   - Base85/ASCII85    encryption and decryption (concept (in c#) from google)
   - Base64            encryption and decryption
@@ -35,3 +36,4 @@ Examples:
       Base85Encoder.Base85_64Encoder("Hello World!");
       Base85Decoder.Base85_64Decode( "ODdjVVJEXWksIkVibzgw");
   
+</code></pre>
