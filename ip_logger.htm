@@ -2,13 +2,14 @@
 <html lang="en-US">
   
     <header>
-        <title>IP Logger</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+    
+        <title>IP Logger</title>
     </header>
 
   
     <body>
- 
+      
       <script>
       $.getJSON("https://api.ipify.org?format=json", function(data) {
           $("#gfg").html(data);
