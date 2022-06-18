@@ -1,36 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-#define DATASIZE 1001
+#define DATASIZE 1024 * 8
+
 
 void brainfuck(char *command_pointer, char *input) {
     int bracket_flag;
+    bool comment = false;
     char command;
+    char cmd;
     char data[DATASIZE] = {0};
     char *dp; 
-    // dp = &data[DATASIZE / 2]; // idk?
+    dp = &data[DATASIZE / 2]; // idk?
 
     while (command = *command_pointer++)
         switch (command) {
+        // really bad comment code
+        case '{':
+            comment = true;
+            cmd = *command_pointer--;
+            if (cmd == '\"') comment = false;
+            *command_pointer++;
+            break;
+        case '}':
+            comment = false;
+            break;
         case '>':
+            if (comment) break;
             dp++;
             break;
         case '<':
+            if (comment) break;
             dp--;
             break;
         case '+':
+            if (comment) break;
             (*dp)++;
             break;
         case '-':
+            if (comment) break;
             (*dp)--;
             break;
         case '.':
+            if (comment) break;
             printf("%c", *dp);
             break;
         case ',':
+            if (comment) break;
             *dp = *input++;
             break;
         case '[':
+            if (comment) break;
             if (!*dp) {
                 for (bracket_flag = 1; bracket_flag; command_pointer++)
                     if (*command_pointer == '[')
@@ -40,6 +61,7 @@ void brainfuck(char *command_pointer, char *input) {
             }
             break;
         case ']':
+            if (comment) break;
             if (*dp) {
                 command_pointer -= 2;
                 for (bracket_flag = 1; bracket_flag; command_pointer--)
@@ -78,6 +100,6 @@ int main(int argc, char *argv[]) {
     buffer[length] = '\0';
 
 
-    brainfuck(buffer, "");
+    brainfuck(buffer, ""); // "+[----->+++<]>+.+.[--->+<]>---.+[----->+<]>.++.--."
     return 0;
 }
